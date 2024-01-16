@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,600;0,700;0,800;1,500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// .card__article
+.card__detail_article {
+    width: 462px;
+    height: 160px;
+    border: 1px solid rgba(0, 0, 0, 1);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+
+    .title {
+        margin-left: 20px;
+
+        .card__title_article {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            color: rgba(0, 0, 0, 1);
+            margin-top: 15px;
+        }
+
+        p {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 1);
+            margin-top: 17px;
+        }
+    }
+
+    .card__img {
+        width: 150.68px;
+        height: 150px;
+        margin-right: 5px;
+        margin-bottom: 15px;
+    }
+}
+
+.card__detail_article:hover {
+    transform: scale(1.02);      
+}
+
+// .card__detailed_quiz
+
+.card__detailed_quiz {
+    width: 720px;
+    height: 450px;
+    border: 1px solid rgba(201, 248, 155, 1);
+    box-shadow: 0px 0px 24px 8px rgba(203, 248, 158, 1);
+    background-color: rgba(201, 248, 155, 1);
+    margin: auto;
+    margin-top: 31px;
+    padding-top: 76px;
+
+    img {
+        width: 219px;
+        height: 231px; 
+    }
+
+    .card__title_quiz {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 800;
+        font-size: 40px;
+        color: rgba(0, 0, 0, 1);
+    }
+
+    p {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        color: rgba(0, 0, 0, 1);
+        margin-top: 15px;
+    }
+}
