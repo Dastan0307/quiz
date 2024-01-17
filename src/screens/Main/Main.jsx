@@ -1,26 +1,27 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useNavigate } from 'react-router-dom';
-import listImg2 from '../../assets/images/Frame 2.svg';
-import listImg4 from '../../assets/images/Frame 4.svg';
-import listImg9 from '../../assets/images/Frame 9.svg';
-import listImg11 from '../../assets/images/Frame 11.svg';
-import listImg12 from '../../assets/images/Frame 12.svg';
-import styles from './main.module.scss';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
 import QuizCard from '../../components/Card/QuizCard';
 import ArticleCard from '../../components/Card/ArticleCard';
-import { useEffect, useState } from 'react';
 import { getAticles } from '../../store/slices/Article/ArticleSlice';
-import { useDispatch } from 'react-redux';
+import styles from './main.module.scss';
+import { getQuizes } from '../../store/slices/Quiz/quizSlice';
 
 const Main = () => {
-  const [page, setPage] = useState(0);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const articles = useSelector(state => state.article.article?.results);
+  const quizes = useSelector(state => state.quiz.quiz.results);
 
   useEffect(() => {
-    dispatch(getAticles(page));
-  }, []);
+    dispatch(getAticles());
+    dispatch(getQuizes());
+  }, [dispatch, ]);
 
   return (
     <div className={styles.container}>
@@ -32,9 +33,22 @@ const Main = () => {
         />
       </div>
       <div className={styles.list}>
-        <ArticleCard />
-        <img src={listImg2} alt="Error :(" className={styles.img} onClick={() => navigate('/article')} />
-        <img src={listImg4} alt="Error :(" className={styles.img} />
+      <Swiper
+              slidesPerView={3.5}
+              spaceBetween={16}
+              grabCursor={true}
+              modules={[Pagination]}
+              className="mySwiper"
+            >
+        {
+          articles?.map(artic => 
+            <SwiperSlide key={artic.id}>
+              <ArticleCard key={artic.id} artic={artic} />
+            </SwiperSlide>
+          )
+        }
+
+      </Swiper>
       </div>
       <div className={styles.titles}>
         <h4 className={styles.h4}>Квизы</h4>
@@ -44,10 +58,11 @@ const Main = () => {
         />
       </div>
       <div className={styles.list2}>
-        <img src={listImg9} alt="Error :(" className={styles.img} onClick={() => navigate('/quiz')} />
-        <img src={listImg11} alt="Error :(" className={styles.img} />
-        <QuizCard />
-        <img src={listImg12} alt="Error :(" className={styles.img} />
+        {
+          quizes?.map(quiz => 
+            <QuizCard key={quiz.id} quiz={quiz} />
+          )
+        }
       </div>
     </div>
   );

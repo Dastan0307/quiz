@@ -1,15 +1,17 @@
 import { Card, Typography } from '@mui/material';
-import img1 from '../../assets/images/Frame 3.svg';
+import { useNavigate } from "react-router-dom";
 import styles from './detailed_card.module.scss';
 
-const DetailedArticleCard = () => {
+const DetailedArticleCard = ({ ...props }) => {
+  const navigate = useNavigate();
+
   return (
-    <Card className={styles.card__detail_article}>
+    <Card className={styles.card__detail_article} onClick={() => navigate(`/article/${props.id}`)}>
       <div className={styles.title}>
-        <Typography variant="h4" className={styles.card__title_article}>Жизнь и правление Наполеона Бонапарта</Typography>
-        <p>#История <span>15 минут</span></p>
+        <Typography variant="h4" className={styles.card__title_article}>{props.title}</Typography>
+        <p>#{props.category} <span> {props.read_time} минут</span></p> 
       </div>
-      <img src={img1} alt="Error :(" className={styles.card__img} />
+      <img src={props.art_image} alt="Error :(" className={styles.card__img} />
     </Card>
   );
 };

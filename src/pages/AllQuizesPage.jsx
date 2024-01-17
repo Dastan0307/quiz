@@ -1,5 +1,7 @@
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -7,16 +9,22 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
 import quizImg1 from '../assets/images/Frame 11 1.svg';
-import quizImg2 from '../assets/images/Frame 11 2.svg';
 import quizImg3 from '../assets/images/Frame 11 3.svg';
 import point from '../assets/images/Group.svg';
-// import { quizImg1, quizImg2, quizImg3 } from '../assets';
 import { PrimaryButton } from '../components/Button/PrimaryButton';
-import styles from '../styles/all_quizes.module.scss';
 import DetailedQuizCard from '../components/DetailedCard/DetailedQuizCard';
+import { getQuizes } from '../store/slices/Quiz/quizSlice';
+import styles from '../styles/all_quizes.module.scss';
 
 const AllQuizesPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const quizes = useSelector(state => state.quiz.quiz.results);
+
+  useEffect(() => {
+    dispatch(getQuizes());
+  }, [dispatch, ]);
 
   return (
     <div className={styles.all_quizes}>
@@ -50,9 +58,13 @@ const AllQuizesPage = () => {
           <SwiperSlide>
             <img src={quizImg1} alt="slide_image" className={styles.swiperImg} />
           </SwiperSlide>
-          <SwiperSlide>
-            <DetailedQuizCard />
-          </SwiperSlide>
+          {
+            quizes?.map((quiz) => (
+              <SwiperSlide key={quiz.id}>
+                <DetailedQuizCard key={quiz.id} quiz={quiz}/>
+              </SwiperSlide>
+            ))
+          }
           <SwiperSlide>
             <img src={quizImg3} alt="slide_image" className={styles.swiperImg} />
           </SwiperSlide>
@@ -62,7 +74,6 @@ const AllQuizesPage = () => {
             </div>
             <div className="swiper-button-next slider-arrow">
             </div>
-            {/* <div className="swiper-pagination"></div> */}
           </div>
         </Swiper>
       </div>

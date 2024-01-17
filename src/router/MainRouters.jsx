@@ -24,12 +24,12 @@ const MainRoutes = () => {
             id: 3
         },
         {
-            link: '/article',
+            link: '/article/:id',
             element: <Article />,
             id: 4
         },
         {
-            link: '/quiz',
+            link: '/quiz/:id',
             element: <Quiz />,
             id: 5
         },

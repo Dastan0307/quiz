@@ -13,7 +13,7 @@
         position: absolute;
     }
 
-    .option{
+    .option {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -39,21 +39,38 @@
 
         .question {
             width: 626px;
-            height: 96px;
+            height: 170px;
             font-family: 'Nunito', sans-serif;
             font-weight: 700;
             font-size: 32px;
             text-align: center;
             color: rgba(0, 0, 0, 1);
             margin-bottom: 10px;
-        }
-
-        button {
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         button:last-child {
-            margin-top: 50px;
+            margin-top: 30px;
+        }
+
+        li {
+            width: 358px;
+            height: 48px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 1);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(0, 0, 0, 1);
+            margin: 20px 0;
+            cursor: pointer;
+        }
+
+        li:active {
+            background-color: rgb(205, 204, 204);
         }
     }
 }

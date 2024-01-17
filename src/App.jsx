@@ -1,6 +1,6 @@
+import Header from './components/Header/Header.jsx'
+import MainRoutes from './router/MainRouters.jsx'
 import styles from './app.module.scss'
-import { Header } from './components/Header/Header'
-import MainRoutes from './router/MainRouters'
 
 function App() {
 

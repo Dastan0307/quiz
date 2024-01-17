@@ -1,14 +1,16 @@
 import { Card, Typography } from "@mui/material";
-import listImg3 from '../../assets/images/Frame 3.svg';
+import { useNavigate } from "react-router-dom";
 import styles from './card.module.scss';
 
-const ArticleCard = () => {
+const ArticleCard = ({ artic }) => {
+  const navigate = useNavigate();
+
   return (
-    <Card className={styles.card__article}>
-      <Typography variant="h4" className={styles.card__title_article}>Жизнь и правление Наполеона Бонапарта </Typography>
+    <Card className={styles.card__article} onClick={() => navigate(`/article/${artic.id}`)}>
+      <Typography variant="h4" className={styles.card__title_article}>{artic.title}</Typography>
       <div className={styles.card__img}>
-        <p>#История</p>
-        <img src={listImg3} alt="Error :(" className={styles.img} />
+        <p>#{artic.category.name}</p>
+        <img src={artic.art_image} alt="Error :(" className={styles.img} />
       </div>
     </Card>
   );
