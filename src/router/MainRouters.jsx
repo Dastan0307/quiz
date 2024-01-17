@@ -5,6 +5,7 @@ import AllQuizesPage from '../pages/AllQuizesPage';
 import Article from '../pages/Article';
 import Quiz from '../pages/Quiz';
 import QuizQuestions from '../pages/QuizQuestions';
+import ResultPage from '../pages/ResultPage';
 
 const MainRoutes = () => {
     const PUBLIC_ROUTES = [
@@ -37,6 +38,11 @@ const MainRoutes = () => {
             link: '/quiz-questions',
             element: <QuizQuestions />,
             id: 6
+        },
+        {
+            link: '/result',
+            element: <ResultPage />,
+            id: 7
         },
     ];
 

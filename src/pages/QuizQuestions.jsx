@@ -37,28 +37,28 @@ const QuizQuestions = () => {
   return (
     <div className={styles.questions}>
       <ArrowBackIcon className={styles.arrowIcon} onClick={() => navigate('/')} />
-{
-  step !== questions?.length ? 
-  <div className={styles.option}>
-  <p className={styles.count_question}>Вопрос 4 из 10</p>
-  {/* <Box sx={{ flexGrow: 1 }}>
-    <BorderLinearProgress variant="determinate" value={parcentage} className={styles.line_count_question} />
-  </Box> */}
-  <div style={{ width: '940px', height:'12px', margin: 'auto', border: '1px solid rgba(0, 0, 0, 1)', borderRadius: '13px', overflow: 'hidden' }}>
-    <div style={{  width: `${parcentage}%`, backgroundColor: 'rgba(185, 255, 160, 1)', height: '20px', transition: 'width 0.5s' }}></div>
-  </div>
-  <p className={styles.question}>{question?.title}</p>
- <ul>
-  {
-      question?.answer.map((vari) => (
-        <li key={vari.id} onClick={() => getOneVariant(vari.id)}>{vari.answer_text}</li>
-      ))
-    }
- </ul>
-  <PrimaryButton>Следующий вопрос</PrimaryButton>
-</div> :
-<ResultPage />
-}
+      {
+        step !== questions?.length ? 
+        <div className={styles.option}>
+        <p className={styles.count_question}>Вопрос {step + 1} из {questions.length}</p>
+        {/* <Box sx={{ flexGrow: 1 }}>
+          <BorderLinearProgress variant="determinate" value={parcentage} className={styles.line_count_question} />
+        </Box> */}
+        <div style={{ width: '940px', height:'12px', margin: 'auto', border: '1px solid rgba(0, 0, 0, 1)', borderRadius: '13px', overflow: 'hidden' }}>
+          <div style={{  width: `${parcentage}%`, backgroundColor: 'rgba(185, 255, 160, 1)', height: '20px', transition: 'width 0.5s' }}></div>
+        </div>
+        <p className={styles.question}>{question?.title}</p>
+      <ul>
+        {
+            question?.answer.map((vari) => (
+              <li key={vari.id} onClick={() => getOneVariant(vari.id)}>{vari.answer_text}</li>
+            ))
+          }
+      </ul>
+        <PrimaryButton>Следующий вопрос</PrimaryButton>
+      </div> :
+      <ResultPage correct={correct} questions={questions} />
+      }
     </div>
   );
 };
