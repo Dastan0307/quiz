@@ -34,7 +34,7 @@ Make sure you have [Node.js](https://nodejs.org/) installed before proceeding.
 git clone https://github.com/your-username/quiz-app.git
 
 # Navigate to the project directory
-cd quiz-app
+cd quiz
 
 # Install dependencies
 npm install
